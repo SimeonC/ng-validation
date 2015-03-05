@@ -1,0 +1,25 @@
+{
+  "name": "sc-validation",
+  "version": "0.0.1",
+  "main": [
+    "./dist/sc-validation.js"
+  ],
+  "description": "AngularJS Directive for manipulating form validations",
+  "keywords": [
+    "angular"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test*",
+    "demo*",
+    "gulpfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "angular": "^1.3.0"
+  },
+  "license": "MIT",
+  "homepage": "http://github.com/SimeonC/sc-validation"
+}
