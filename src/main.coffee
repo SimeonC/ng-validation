@@ -1,4 +1,4 @@
-angular.module 'scValidation', []
+angular.module('scValidation', [])
 .directive 'scValidation', ->
 	restrict: 'A'
 	require: ['ngModel', '^form']
@@ -8,8 +8,12 @@ angular.module 'scValidation', []
 		if (_funcs = scope.$eval attrs.scValidation)?
 			if _funcs.$validators then angular.extend ngModel.$validators, _funcs.$validators
 			if _funcs.$asyncValidators then angular.extend ngModel.$asyncValidators, _funcs.$asyncValidators
-			if _funcs.$validatorsWatch then scope.$watch _funcs.$validatorsWatch.key or _funcs.$validatorsWatch, ngModel.$validate, _funcs.$validatorsWatch.deep
-			if _funcs.$formatters then ngModel.$formatters.push _format for _format in _funcs.$formatters
+			if _funcs.$validatorsWatch
+				scope.$watch _funcs.$validatorsWatch.key or _funcs.$validatorsWatch,
+					ngModel.$validate,
+					_funcs.$validatorsWatch.deep
+			if _funcs.$formatters
+				ngModel.$formatters.push _format for _format in _funcs.$formatters
 		
 		if attrs.name then ngModel.$name = attrs.name
 		else ngModel.$name = attrs.ngModel.replace /[^a-zA-Z0-9]/g, '_'

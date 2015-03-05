@@ -18,6 +18,7 @@ coffeelint = require 'gulp-coffeelint'
 
 gulp.task 'clean:dist', (cb) -> del ['dist/*'], cb
 gulp.task 'compile:coffee', ->
+	pkg = JSON.parse fs.readFileSync './package.json', 'utf8'
 	gulp.src ['./src/main.coffee']
 		# Lint the coffescript
 		.pipe coffeelint()
